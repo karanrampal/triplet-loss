@@ -1,0 +1,15 @@
+# Visual Studio Code settings
+.vscode/
+
+# Byte-compiled
+__pycache__/
+
+# Distribution
+dist/
+build/
+
+# pyinstaller
+*.spec
+
+# Unit test coverage
+.pytest_cache/
