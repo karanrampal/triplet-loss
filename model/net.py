@@ -37,7 +37,8 @@ class Net(tnn.Module):
         x = F.max_pool2d(x, 2, 2)
         x = F.relu(self.conv2(x))
         x = F.max_pool2d(x, 2, 2)
-        out = x.view(x.size(0), -1)
+        x = x.view(x.size(0), -1)
+        out = self.fc1(x)
 
         return out
 
