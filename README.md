@@ -1,8 +1,6 @@
-# Template for projects
+# Triplet Loss
 
-This is a template, for future projects, which can be hosted on Github. After cloning and manipulating the git directory (deleting :wink:) it can be used as starting point for any other project.
-
-Contains starter code for model creation, training, testing and evaluation using Pytorch. Hence no need to create these from scratch everytime, just modify the relevant files for the particular project.
+This is a pytorch implementation of the triplet loss. It is based on the blog post by [Olivier Moindrot](https://omoindrot.github.io/triplet-loss) and the [Facenet paper](https://arxiv.org/abs/1503.03832) by Florian Schroff, Dmitry Kalenichenko and James Philbin.
 
 ## Directory structure
 Structure of the project
@@ -14,6 +12,10 @@ model/
     __init__.py
     data_loader.py
     net.py
+    triplet_loss.py
+tests/
+    __init__.py
+    test_triplet_loss.py
 .gitignore
 LICENSE
 README.md
@@ -23,6 +25,7 @@ search_hyperparams.py
 synthesize_results.py
 train.py
 utils.py
+visualization.py
 ```
 
 ## Usage
@@ -30,8 +33,10 @@ The simplest way to use this repository as a template for a project is to clone 
 ```
 git clone <url> <newprojname>
 cd <newprojname>
-rm -r .git
-git init
+```
+To start training you can do the following,
+```
+python train.py --data_dir=<wherever your dataset is>
 ```
 
 ## Requirements
@@ -42,8 +47,3 @@ conda create -n <yourenvname> python=<3.x>
 source activate <yourenvname>
 conda install -n <yourenvname> --file requirements.txt
 ```
-
-## Reference
-Borrowed heavily and modified slightly from the lovely [Stanford course](https://github.com/cs230-stanford "Stanford's deep learning course") with code written by Surag Nair, Olivier Moindrot and Guillaume Genthial.
-
-*I don't know how to cite them, hopefully this is enough as reference, for me to not get in any kind of trouble.*
