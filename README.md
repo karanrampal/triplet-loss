@@ -34,9 +34,14 @@ The simplest way to use this repository as a template for a project is to clone 
 git clone <url> <newprojname>
 cd <newprojname>
 ```
-To start training you can do the following,
+To start training we can do the following,
 ```
 python train.py --data_dir=<wherever your dataset is>
+```
+To visualize the trained model, we can do the following,
+```
+python visualize.py
+tensorboard --logdir=experiments/
 ```
 
 ## Requirements
