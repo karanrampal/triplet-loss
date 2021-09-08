@@ -19,6 +19,10 @@ class Net(tnn.Module):
         """
         super(Net, self).__init__()
 
+        #dims = [params.in_dim] + params.hidden_dim + [params.out_dim]
+        #layers = [tnn.Linear(i, j) for i, j in utils.window(dims, n=2)]
+        #self.last_fc = layers.pop()
+        #self.layers = tnn.ModuleList(layers)
         self.conv1 = tnn.Conv2d(1, params.num_channels, 3, stride=1, padding=1)
         self.conv2 = tnn.Conv2d(params.num_channels,
                                 params.num_channels*2, 3, stride=1, padding=1)
@@ -34,6 +38,9 @@ class Net(tnn.Module):
         Returns:
             out: (torch.Tensor) Embeddings of the input (batch_size, num_channels)
         """
+        #for layer in self.layers:
+        #    x = F.relu(layer(x))
+        #out = self.last_fc(x)
         x = F.relu(self.conv1(x))
         x = F.max_pool2d(x, 2, 2)
         x = F.relu(self.conv2(x))
