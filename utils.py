@@ -6,6 +6,7 @@ import json
 import logging
 import os
 import shutil
+from itertools import islice
 
 import torch
 
@@ -100,3 +101,19 @@ def safe_makedir(path):
         os.makedirs(path)
     else:
         print("Directory {0} Exists!".format(path))
+
+def window(seq, width=2):
+    """Returns a sliding window of width n over data from the iterable
+    Args:
+        seq (iterable): sequence to iterate over
+        width (int): width of window
+    Yields:
+        (s0, s1 ... sn-1), (s1, s2 ... sn),
+    """
+    itr = iter(seq)
+    result = tuple(islice(itr, width))
+    if len(result) == width:
+        yield result
+    for elem in itr:
+        result = result[1:] + (elem,)
+        yield result
