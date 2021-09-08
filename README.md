@@ -18,6 +18,7 @@ tests/
     test_triplet_loss.py
 .gitignore
 LICENSE
+Makefile
 README.md
 evaluate.py
 requirements.txt
@@ -40,7 +41,7 @@ python train.py --data_dir=<wherever your dataset is>
 ```
 To visualize the trained model, we can do the following,
 ```
-python visualize.py
+python visualization.py
 tensorboard --logdir=experiments/
 ```
 

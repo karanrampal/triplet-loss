@@ -6,3 +6,5 @@ tabulate
 tqdm
 pytest
 tensorboard
+black
+pytest-cov

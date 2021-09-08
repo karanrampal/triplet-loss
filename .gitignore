@@ -13,6 +13,7 @@ build/
 
 # Unit test coverage
 .pytest_cache/
+.coverage
 
 # Run
 runs/
