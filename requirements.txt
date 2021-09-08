@@ -1,6 +1,6 @@
 numpy
 Pillow
-pytorch
+torch
 torchvision
 pandas
 tabulate
