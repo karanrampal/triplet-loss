@@ -25,6 +25,7 @@ class Net(tnn.Module):
 
         self.fc1 = tnn.Linear(params.num_channels*2*7*7, params.num_channels)
         self.dropout_rate = params.dropout_rate
+        self.normalize = params.normalize
 
     def forward(self, x):
         """Defines the forward propagation through the network
@@ -39,6 +40,8 @@ class Net(tnn.Module):
         x = F.max_pool2d(x, 2, 2)
         x = x.view(x.size(0), -1)
         out = self.fc1(x)
+        if self.normalize:
+            out = F.normalize(out, p=2, dim=1)
 
         return out
 
@@ -52,7 +55,8 @@ def loss_fn(outputs, ground_truth, params):
     Returns:
         loss: (torch.Tensor) loss for all the inputs in the batch
     """
-    loss = batch_hard_triplet_loss(ground_truth, outputs, margin=params.margin)
+    loss = batch_hard_triplet_loss(ground_truth, outputs, margin=params.margin,
+                                   squared=params.squared)
     return loss
 
 

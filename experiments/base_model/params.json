@@ -7,5 +7,7 @@
     "num_classes": 10,
     "margin": 0.5,
     "save_summary_steps": 100,
-    "num_workers": 4
+    "num_workers": 4,
+    "squared": true,
+    "normalize": false
 }
