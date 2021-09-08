@@ -1,3 +1,5 @@
+[![Triplet loss](https://github.com/karanrampal/triplet-loss/actions/workflows/tripletloss.yaml/badge.svg)](https://github.com/karanrampal/triplet-loss/actions/workflows/tripletloss.yaml)
+
 # Triplet Loss
 
 This is a pytorch implementation of the triplet loss. It is based on the blog post by [Olivier Moindrot](https://omoindrot.github.io/triplet-loss) and the [Facenet paper](https://arxiv.org/abs/1503.03832) by Florian Schroff, Dmitry Kalenichenko and James Philbin.
