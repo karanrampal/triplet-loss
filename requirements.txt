@@ -1,6 +1,7 @@
 numpy
 Pillow
-torch>=1.4
+pytorch
+torchvision
 pandas
 tabulate
 tqdm

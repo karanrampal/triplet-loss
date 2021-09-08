@@ -27,7 +27,7 @@ def aggregate_metrics(parent_dir, metrics):
     # Get the metrics for the folder if it has results from an experiment
     metrics_file = os.path.join(parent_dir, 'metrics_val_last_weights.json')
     if os.path.isfile(metrics_file):
-        with open(metrics_file, 'r') as f:
+        with open(metrics_file, 'r', encoding='utf-8') as f:
             metrics[parent_dir] = json.load(f)
 
     # Check every subdirectory of parent_dir
@@ -67,7 +67,7 @@ def main():
 
     # Save results in parent_dir/results.md
     save_file = os.path.join(args.parent_dir, "results.md")
-    with open(save_file, 'w') as f:
+    with open(save_file, 'w', encoding='utf-8') as f:
         f.write(table)
 
 if __name__ == "__main__":

@@ -9,8 +9,8 @@ format:
 	black *.py
 
 lint:
-	pylint --disable=R,W0221 model tests train.py utils.py visualization.py\
-		evaluate.py search_hyperparams.py synthesize_results.py
+	pylint --disable=R,C,E1101,W0221 model tests train.py visualization.py\
+		utils.py evaluate.py search_hyperparams.py synthesize_results.py
 	# lint Dockerfile
 	# docker run --rm -i hadolint/hadolint < Dockerfile
 
