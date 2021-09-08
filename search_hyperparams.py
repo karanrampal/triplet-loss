@@ -5,6 +5,7 @@ import argparse
 import os
 from subprocess import check_call
 import sys
+from itertools import product
 
 import utils
 
@@ -16,7 +17,7 @@ def args_parser():
     """
     parser = argparse.ArgumentParser()
     parser.add_argument('--parent_dir',
-                        default='experiments/learning_rate',
+                        default='experiments/param_search',
                         help='Directory containing params.json')
     parser.add_argument('--data_dir',
                         default='../datasets',
@@ -56,15 +57,25 @@ def main():
     assert os.path.isfile(json_path), "No json configuration file found at {}".format(json_path)
     params = utils.Params(json_path)
 
-    # Perform hypersearch over one parameter
-    learning_rates = [1e-5, 1e-4, 1e-3]
+    # Perform hypersearch over one parameters
+    configurations = {
+        "learning_rate": [0.01, 0.001, 0.0001],
+        "margin": [0.2, 0.5, 0.8],
+        "normalize": [True, False],
+    }
+    conf_values = list(configurations.values())
+    conf_names = list(configurations.keys())
 
-    for learning_rate in learning_rates:
+    for vals in product(*conf_values):
         # Modify the relevant parameter in params
-        params.learning_rate = learning_rate
+        conf = dict(zip(conf_names, vals))
+        params.__dict__.update(conf)
 
         # Launch job (name has to be unique)
-        job_name = "learning_rate_{}".format(learning_rate)
+        name = ""
+        for key, val in conf.items():
+            name += '_' + str(key) + '_' + str(val)
+        job_name = "params{}".format(name)
         launch_training_job(args.parent_dir, args.data_dir, job_name, params)
 
 
