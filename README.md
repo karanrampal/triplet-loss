@@ -7,6 +7,9 @@ This is a pytorch implementation of the triplet loss. It is based on the blog po
 ## Directory structure
 Structure of the project
 ```
+.github/
+    workflow/
+        tripletloss.yaml
 experiments/
     base_model/
         params.json
@@ -19,10 +22,10 @@ tests/
     __init__.py
     test_triplet_loss.py
 .gitignore
+evaluate.py
 LICENSE
 Makefile
 README.md
-evaluate.py
 requirements.txt
 search_hyperparams.py
 synthesize_results.py
