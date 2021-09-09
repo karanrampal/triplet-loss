@@ -13,6 +13,8 @@ Structure of the project
 experiments/
     base_model/
         params.json
+    param_search/
+        params.json
 model/
     __init__.py
     data_loader.py
