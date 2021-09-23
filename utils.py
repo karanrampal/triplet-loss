@@ -5,6 +5,7 @@
 import json
 import logging
 import os
+import errno
 import shutil
 from itertools import islice
 
@@ -82,7 +83,9 @@ def load_checkpoint(checkpoint, model, optimizer=None):
         optimizer: (torch.optim) optional: resume optimizer from checkpoint
     """
     if not os.path.exists(checkpoint):
-        raise"File doesn't exist {}".format(checkpoint)
+        raise FileNotFoundError(errno.ENOENT,
+                                os.strerror(errno.ENOENT),
+                                checkpoint)
     checkpoint = torch.load(checkpoint)
     model.load_state_dict(checkpoint['state_dict'])
 
