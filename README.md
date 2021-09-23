@@ -31,6 +31,7 @@ README.md
 requirements.txt
 search_hyperparams.py
 synthesize_results.py
+tox.ini
 train.py
 utils.py
 visualization.py
