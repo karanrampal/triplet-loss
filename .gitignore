@@ -12,6 +12,7 @@ build/
 *.spec
 
 # Unit test coverage
+.tox
 .pytest_cache/
 .coverage
 
